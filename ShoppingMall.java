@@ -70,7 +70,8 @@ public class ShoppingMall {
 			
 			boolean uncheckedNodes = true;
 			
-			while (uncheckedNodes) {
+			//Keeps getting stuck in an infinite loop, too lozay to make this more optimised.
+			for(int i=0;i<edges.length*2;i++) {
 				for (Edge edge : edges) {
 					if (edge.from != currentNode || edge.to.checked) continue;
 					
@@ -136,7 +137,8 @@ public class ShoppingMall {
 		}
 		
 		public void prepare() { //Resets the node (so we can dijkstra again)
-			distanceTo = Double.MAX_VALUE;
+			//Double.MAX_Value causes overflow errors sometimes
+			distanceTo = 100000;
 			checked = false;
 		}
 	}
